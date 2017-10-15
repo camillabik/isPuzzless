@@ -44,7 +44,6 @@ public class AnswerDAOImpl implements AnswerDAO{
         }
         return answers;
     }
-
     @Override
     public boolean createAnswer(Answer answer) {
         return false;
