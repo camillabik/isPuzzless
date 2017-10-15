@@ -26,8 +26,8 @@ public class UserDAOImpl implements UserDAO {
             statement.setString(2, password);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                user = new User(resultSet.getString("login"),
-                        resultSet.getString("password"));
+                user = new User(resultSet.getString("name"),resultSet.getString("login"),
+                        resultSet.getString("password"),  resultSet.getBoolean("isAdmin"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -39,9 +39,13 @@ public class UserDAOImpl implements UserDAO {
     public Boolean createUser(User user) {
         try {
             PreparedStatement statement = manager.getConnection().prepareStatement
-                    ("INSERT INTO users (login, password) VALUES(?, ?)");
-            statement.setString(1, user.getLogin());
-            statement.setString(2, user.getPassword());
+                    ("INSERT INTO users (login, password) VALUES(?,?,?,?)");
+            statement.setString(1, user.getName());
+            statement.setString(2, user.getLogin());
+            statement.setString(3, user.getPassword());
+            statement.setBoolean(4, user.isAdmin());
+
+
             if (statement.executeUpdate() == 1) {
                 return true;
             }
