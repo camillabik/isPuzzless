@@ -37,6 +37,7 @@ public class AnswerDAOImpl implements AnswerDAO{
                 Answer answer = new Answer(question, resultSet.getString("answer"), resultSet.getBoolean("is_right"));
                 answer.setAnswer(resultSet.getString("answer"));
                 answers.add(answer);
+                System.out.println("test");
             }
         } catch (SQLException ex){
             ex.printStackTrace();
