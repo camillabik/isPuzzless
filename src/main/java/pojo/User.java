@@ -36,11 +36,26 @@ public class User {
     }
 
     public User(){}
-    public User(String name, String login) {
+
+    public User(int id, String name, String login, String password, boolean isAdmin) {
+        this.id = id;
         this.name = name;
         this.login = login;
-      //  this.category = category;
+        this.password = password;
+        this.isAdmin = isAdmin;
     }
+
+    public User(String name, String login, String password, boolean isAdmin) {
+        this.name = name;
+        this.login = login;
+        this.password = password;
+        this.isAdmin = isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
+    }
+
     public String getName() {
         return name;
     }
@@ -57,11 +72,4 @@ public class User {
         this.login = login;
     }
 
-//    public String getCategory() {
-//        return category;
-//    }
-//    @XmlElement
-//    public void setCategory(String category) {
-//        this.category = category;
-//    }
 }
