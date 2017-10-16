@@ -26,7 +26,7 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
+    @XmlElement
     public boolean isAdmin() {
         return isAdmin;
     }
@@ -51,7 +51,7 @@ public class User {
         this.password = password;
         this.isAdmin = isAdmin;
     }
-
+    @XmlElement
     public void setAdmin(boolean admin) {
         isAdmin = admin;
     }
