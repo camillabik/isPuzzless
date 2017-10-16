@@ -4,37 +4,36 @@ package db.daos;
 import db.ConnectionManager;
 import db.IConnectionManager;
 
+import pojo.Category;
 import pojo.Question;
 import pojo.User;
 
 import java.sql.*;
 import java.util.List;
 
-public class QuestionDAOImpl implements QuestionDAO{
-    private static IConnectionManager manager;
-
-    static {
-        manager = ConnectionManager.getInstance();
-    }
-    @Override
-    public  List<Question> getAll() {
-        List<Question> questionList = null;
-        try {
-            PreparedStatement statement = manager.getConnection().
-                    prepareStatement("SELECT * FROM questions WHERE login = ? AND  password = ? ");
-            statement.setString(1, login);
-            statement.setString(2, password);
-            ResultSet resultSet = statement.executeQuery();
-            if (resultSet.next()) {
-                user = new User(resultSet.getString("name"),resultSet.getString("login"),
-                        resultSet.getString("password"),  resultSet.getBoolean("isAdmin"));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return user;
-    }
-
+public class QuestionDAOImpl {
+//    private static IConnectionManager manager;
+//
+//    static {
+//        manager = ConnectionManager.getInstance();
+//    }
+//    @Override
+//    public  List<Question> getAll(Category category, String name, String text) {
+//        List<Question> questionList = null;
+//        try {
+//            PreparedStatement statement = manager.getConnection().
+//                    prepareStatement("SELECT * FROM questions");
+//
+//            ResultSet resultSet = statement.executeQuery();
+//            if (resultSet.next()) {
+//                Question question= new Question();
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return user;
+//    }
+//
 
     }
 
@@ -68,7 +67,7 @@ public class QuestionDAOImpl implements QuestionDAO{
 //
 //        return questions;
 
-    }
-}
+//    }
+//}
 
 

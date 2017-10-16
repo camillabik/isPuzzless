@@ -11,12 +11,12 @@ import java.io.File;
 public class ReaderJaxbQuestion {
     public static void main(String[] args) throws JAXBException {
         File file = new File("C:\\Users\\admin\\IdeaProjects\\test1\\src\\puzzles\\jaxb\\userXml\\questionXml\\question.xml");
-        JAXBContext jaxbContext = JAXBContext.newInstance(Question.class);
-        Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-        Question question = (Question) jaxbUnmarshaller.unmarshal(file);
-        System.out.println(question.getName());
-        System.out.println(question.getId());
-        System.out.println(question.getPathToPictureQuestion());
-        System.out.println(question.getPathToTextQuestion());
+//        JAXBContext jaxbContext = JAXBContext.newInstance(Question.class);
+//        Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+//        Question question = (Question) jaxbUnmarshaller.unmarshal(file);
+//        System.out.println(question.getName());
+//        System.out.println(question.getId());
+//        System.out.println(question.getPathToPictureQuestion());
+//        System.out.println(question.getPathToTextQuestion());
 }
 }

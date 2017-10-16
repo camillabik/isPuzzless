@@ -9,30 +9,30 @@ public class Question {
    private int id;
    private Category category;
    private String name;
-   private String textQuestion;
+   private String text;
    private String pathToPictureQuestion;
 
    public Question() {
    }
 
-   public Question(int id,Category category, String name, String textQuestion) {
+   public Question(int id,Category category, String name, String text) {
       this.category = category;
       this.id = id;
       this.name = name;
-      this.textQuestion =textQuestion;
+      this.text = text;
    }
 
-   public Question(Category category,  String name,int id,String pathToPictureQuestion) {
+   public Question(Category category,String name,int id,String pathToPictureQuestion) {
       this.category = category;
       this.id = id;
       this.name = name;
       this.pathToPictureQuestion = pathToPictureQuestion;
    }
 
-   public Question(Category category, String name, String textQuestion) {
+   public Question(Category category, String name, String text) {
       this.category = category;
       this.name = name;
-      this.textQuestion = textQuestion;
+      this.text = text;
    }
 
 
@@ -60,12 +60,12 @@ public class Question {
       this.name = name;
    }
 
-   public String getPathToTextQuestion() {
-      return textQuestion;
+   public String getText() {
+      return text;
    }
    @XmlElement
-   public void setPathToTextQuestion(String pathToTextQuestion) {
-      this.textQuestion = pathToTextQuestion;
+   public void setPathToTextQuestion(String text) {
+      this.text = text;
    }
 
    public String getPathToPictureQuestion() {
@@ -75,4 +75,5 @@ public class Question {
    public void setPathToPictureQuestion(String pathToPictureQuestion) {
       this.pathToPictureQuestion = pathToPictureQuestion;
    }
+
 }
