@@ -28,6 +28,14 @@ public class Question {
       this.name = name;
       this.pathToPictureQuestion = pathToPictureQuestion;
    }
+
+   public Question(Category category, String name, String textQuestion) {
+      this.category = category;
+      this.name = name;
+      this.textQuestion = textQuestion;
+   }
+
+
    public Category getCategory() {
       return category;
    }
