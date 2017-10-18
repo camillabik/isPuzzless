@@ -3,71 +3,100 @@ package db.daos;
 
 import db.ConnectionManager;
 import db.IConnectionManager;
-
 import pojo.Category;
 import pojo.Question;
-import pojo.User;
 
-import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
-public class QuestionDAOImpl {
-//    private static IConnectionManager manager;
-//
-//    static {
-//        manager = ConnectionManager.getInstance();
-//    }
-//    @Override
-//    public  List<Question> getAll(Category category, String name, String text) {
-//        List<Question> questionList = null;
-//        try {
-//            PreparedStatement statement = manager.getConnection().
-//                    prepareStatement("SELECT * FROM questions");
-//
-//            ResultSet resultSet = statement.executeQuery();
-//            if (resultSet.next()) {
-//                Question question= new Question();
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        return user;
-//    }
-//
-
+public class QuestionDAOImpl implements QuestionDAO{
+    private static IConnectionManager manager;
+    static {
+        manager = ConnectionManager.getInstance();
     }
 
+    @Override
+    public List<Question> getByCategory(Category category) {
+        ArrayList<Question> questionsByCategory = new ArrayList<>();
+        Question question = null;
+        try {
+            PreparedStatement statement = manager.getConnection().
+                    prepareStatement("SELECT \n" +
+                            "\tquestions.*, \n" +
+                            "    categories.name AS category_name\n" +
+                            "FROM questions\n" +
+                            "JOIN categories\n" +
+                            "ON questions.category = categories.id\n" +
+                            "WHERE questions.category = ?");
+            statement.setInt(1, category.getId());
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next())
+            {
+                Category category1 = new Category(resultSet.getString("category_name"));
+
+                question = new Question(category, resultSet.getString("name"), resultSet.getString("text"));
+                questionsByCategory.add(question);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return questionsByCategory;
+    }
+
+    @Override
+    public Question getById(int id) {
+        Question question = null;
+
+        try {
+            PreparedStatement statement = manager.getConnection().
+                    prepareStatement("SELECT \n" +
+                            "\tquestions.*, \n" +
+                            "    categories.name AS category_name\n" +
+                            "FROM questions\n" +
+                            "JOIN categories\n" +
+                            "ON questions.category = categories.id\n" +
+                            "WHERE questions.id = ?\n");
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next())
+            {
+                Category category = new Category(resultSet.getString("category_name"));
+
+                question = new Question(category, resultSet.getString("name"), resultSet.getString("text"));
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return question;
+    }
+}
 
 
 
-//        Class.forName("org.postgresql.Driver");
-//
-//        //  Connection con = ConnectionManager.getConnection();
-//        Connection con = DriverManager.getConnection(
-//                "jdbc:postgresql://localhost:5432/puzzles.answers",
-//                "postgres",
-//                "root");
-//        List<Question> questions = new ArrayList<>();
-//        try (Statement statement = con.createStatement()) {
-//            ResultSet resultSet =statement.executeQuery("SELECT * FROM questions;");
-//
-//            while (resultSet.next()){
-//                Question question = new Question(resultSet.getInt("id"), (Category) resultSet.getObject("category"), resultSet.getString("name"), resultSet.getString("text"));
-//                Answer answer = new Answer(question, resultSet.getString("answer"), resultSet.getBoolean("is_right"));
-//              //  answer.setQuestion((Question) resultSet("question"));
-//                //use another sets
-//
-//                questions.add(question);
-//                System.out.println(question);
-//            }
-//        } catch (SQLException ex){
-//            ex.printStackTrace();
-//            //throw your own exception here
-//        }
-//
-//        return questions;
 
-//    }
-//}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

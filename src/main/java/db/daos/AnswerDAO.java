@@ -2,11 +2,13 @@ package db.daos;
 
 
 import pojo.Answer;
+import pojo.Question;
 
 import java.util.List;
 
 public interface AnswerDAO {
-    List<Answer> getAll() throws AnswerDAOImpl.AnswerDAOException;
-    boolean createAnswer(Answer answer);
+    List<Answer> getByQuestion(Question question) throws AnswerDAOImpl.AnswerDAOException;
+    Answer getById() throws AnswerDAOImpl.AnswerDAOException;
+
 }
 

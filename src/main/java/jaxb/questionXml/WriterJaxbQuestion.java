@@ -22,13 +22,13 @@ public class WriterJaxbQuestion {
     }
 
     public static void writer(String puth) throws JAXBException {
-        File file = new File(puth);
-        Question question = new Question();
+/*        File file = new File(puth);
+     //   Question question = new Question();
         JAXBContext context = JAXBContext.newInstance(Question.class);
         Marshaller marshaller = context.createMarshaller();
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
         marshaller.marshal(question, file);
-        marshaller.marshal(question, System.out);
+        marshaller.marshal(question, System.out);*/
     }
 
 }

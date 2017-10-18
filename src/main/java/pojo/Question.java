@@ -12,10 +12,17 @@ public class Question {
    private String text;
    private String pathToPictureQuestion;
 
-   public Question() {
+
+   public Question(int id) {
+      this.id = id;
    }
 
-   public Question(int id,Category category, String name, String text) {
+   public Question(Category category) {
+      this.category = category;
+
+   }
+
+   public Question(int id, Category category, String name, String text) {
       this.category = category;
       this.id = id;
       this.name = name;
@@ -76,4 +83,12 @@ public class Question {
       this.pathToPictureQuestion = pathToPictureQuestion;
    }
 
+   @Override
+   public String toString() {
+      return "Question{" +
+              "category=" + category +
+              ", name='" + name + '\'' +
+              ", text='" + text + '\'' +
+              '}';
+   }
 }

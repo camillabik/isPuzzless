@@ -1,7 +1,6 @@
 package jaxb.questionXml;
 
 
-import pojo.Question;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;

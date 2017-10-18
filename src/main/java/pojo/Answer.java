@@ -14,6 +14,7 @@ public class Answer {
       this.isRightAnswer = isRightAnswer;
    }
 
+
    public Question getQuestion() {
       return question;
    }
@@ -36,5 +37,14 @@ public class Answer {
 
    public void setRightAnswer(boolean rightAnswer) {
       isRightAnswer = rightAnswer;
+   }
+
+   @Override
+   public String toString() {
+      return "Answer{" +
+              "question=" + question +
+              ", answer='" + answer + '\'' +
+              ", isRightAnswer=" + isRightAnswer +
+              '}';
    }
 }
