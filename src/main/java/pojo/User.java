@@ -51,6 +51,16 @@ public class User {
         this.password = password;
         this.isAdmin = isAdmin;
     }
+    public User(String name, String login, String password) {
+        this.name = name;
+        this.login = login;
+        this.password = password;
+    }
+    public User(String login, String password, boolean isAdmin) {
+        this.login = login;
+        this.password = password;
+        this.isAdmin = isAdmin;
+    }
     @XmlElement
     public void setAdmin(boolean admin) {
         isAdmin = admin;

@@ -2,6 +2,8 @@ package db.daos;
 
 import db.ConnectionManager;
 import db.IConnectionManager;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 import pojo.Answer;
 import pojo.Question;
 
@@ -18,9 +20,11 @@ public class AnswerDAOImpl implements AnswerDAO {
     }
 
     private static IConnectionManager manager;
+    private static final Logger logger = Logger.getLogger(Answer.class);
 
     static {
         manager = ConnectionManager.getInstance();
+        PropertyConfigurator.configure("resources/log4j.properties");
     }
 
     @Override
@@ -44,12 +48,12 @@ public class AnswerDAOImpl implements AnswerDAO {
             {
                 Question question1 = new Question(resultSet.getInt("question_id"));
 
-                answer = new Answer(question1, resultSet.getString("text"), resultSet.getBoolean("text"));
+                answer = new Answer(resultSet.getInt("id"), question1, resultSet.getString("text"), resultSet.getBoolean("isRight"));
                 answersByQuestion.add(answer);
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
         return answersByQuestion;
 }
@@ -60,29 +64,3 @@ public class AnswerDAOImpl implements AnswerDAO {
     }
 }
 
-//
-//    @Override
-//    public List<Answer> getAll() throws AnswerDAOException {
-//
-//        // Connection con = ConnectionManager.getConnection();
-//
-//        List<Answer> answers = new ArrayList<>();
-//        try (Statement statement = manager.getConnection().createStatement()) {
-//            ResultSet resultSet = statement.executeQuery("SELECT * FROM answers;");
-//
-//            while (resultSet.next()){
-//                Question question = new Question(resultSet.getInt("id"),  (Category) resultSet.getObject("category"), resultSet.getString("name"), resultSet.getString("text"));
-//                Answer answer = new Answer(question, resultSet.getString("answer"), resultSet.getBoolean("is_right"));
-//                answer.setAnswer(resultSet.getString("answer"));
-//                answers.add(answer);
-//            }
-//        } catch (SQLException ex){
-//            ex.printStackTrace();
-//            throw new  AnswerDAOException();
-//        }
-//        return answers;
-//    }
-//    @Override
-//    public boolean createAnswer(Answer answer) {
-//        return false;
-//    }

@@ -3,6 +3,8 @@ package db.daos;
 
 import db.ConnectionManager;
 import db.IConnectionManager;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 import pojo.Category;
 import pojo.Question;
 
@@ -14,8 +16,12 @@ import java.util.List;
 
 public class QuestionDAOImpl implements QuestionDAO{
     private static IConnectionManager manager;
+    private static final Logger logger = Logger.getLogger(Question.class);
+
     static {
         manager = ConnectionManager.getInstance();
+        PropertyConfigurator.configure("resources/log4j.properties");
+
     }
 
     @Override
@@ -43,7 +49,7 @@ public class QuestionDAOImpl implements QuestionDAO{
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
         return questionsByCategory;
     }
@@ -73,7 +79,7 @@ public class QuestionDAOImpl implements QuestionDAO{
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
         return question;
     }

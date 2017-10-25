@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/isPuzzless.iml" filepath="$PROJECT_DIR$/isPuzzless.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/isPuzzless_main.iml" filepath="$PROJECT_DIR$/.idea/modules/isPuzzless_main.iml" group="isPuzzless" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/isPuzzless_test.iml" filepath="$PROJECT_DIR$/.idea/modules/isPuzzless_test.iml" group="isPuzzless" />
+    </modules>
+  </component>
+</project>

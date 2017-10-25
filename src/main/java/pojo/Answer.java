@@ -1,6 +1,7 @@
 package pojo;
 
 public class Answer {
+   private int id;
    private Question question;
    private String answer;
    private boolean isRightAnswer;
@@ -8,7 +9,8 @@ public class Answer {
    public Answer() {
    }
 
-   public Answer(Question question, String answer, boolean isRightAnswer) {
+   public Answer(int id, Question question, String answer, boolean isRightAnswer) {
+      this.id = id;
       this.question = question;
       this.answer = answer;
       this.isRightAnswer = isRightAnswer;

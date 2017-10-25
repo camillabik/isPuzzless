@@ -2,6 +2,8 @@ package db.daos;
 
 import db.ConnectionManager;
 import db.IConnectionManager;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 import pojo.Category;
 
 import java.sql.PreparedStatement;
@@ -13,9 +15,14 @@ import java.util.List;
 
 public class CategoryDAOImpl implements CategoryDAO {
     private static IConnectionManager manager;
+    private static final Logger logger = Logger.getLogger(Category.class);
+
 
     static {
         manager = ConnectionManager.getInstance();
+        PropertyConfigurator.configure("resources/log4j.properties");
+
+
     }
 
     @Override
@@ -30,7 +37,7 @@ public class CategoryDAOImpl implements CategoryDAO {
                 categories.add(category);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
         return categories;
     }
@@ -52,7 +59,7 @@ public class CategoryDAOImpl implements CategoryDAO {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
         return category;
     }

@@ -1,9 +1,8 @@
-import db.daos.*;
+import db.daos.AnswerDAO;
+import db.daos.AnswerDAOImpl;
 import pojo.Answer;
-import pojo.Category;
 import pojo.Question;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public class Main {
@@ -19,23 +18,22 @@ public class Main {
 //
 //        System.out.println(categoryList);
 //        System.out.println(category);
-
+//
 //        QuestionDAO questionDAO = new QuestionDAOImpl();
-//        Category category = new Category(1);
+//        Category category1 = new Category(1);
 //        List<Question> questionList = questionDAO.getByCategory(category);
 //        Question question = null;
 //        question = questionDAO.getById(1);
 //
 //        System.out.println(questionList);
 //        System.out.println(question);
-
+//
         AnswerDAO answerDAO = new AnswerDAOImpl();
-        Question question = new Question(1);
-        List<Answer> answerList = answerDAO.getByQuestion(question);
+        Question question1 = new Question(1);
+        List<Answer> answerList = answerDAO.getByQuestion(question1);
 
 
         System.out.println(answerList);
-
+//
     }
-
 }
